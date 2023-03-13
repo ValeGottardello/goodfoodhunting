@@ -1,0 +1,17 @@
+
+    <p> <%= dish.title %> </p>
+    <p> <%= dish.details %> </p>
+    <p> <%= dish.id %> </p>
+    <div class="ui-card"> 
+        <img src="<%= dish.image_url %>" alt="" class="details">
+    </div>
+    <form action="/dishes/<%= dish.id %>" method="post"> 
+        <label></label>
+        <input type="hidden" name="_method" value="DELETE"/>
+        <button>delete</button>
+    </form>
+
+    <a href="/dishes/<%= dish.id %>/edit">Edit</a>
+    <a href="/">Home</a>
+
+  

@@ -1,0 +1,19 @@
+
+
+        <h3>
+            Hello <%= email %> ! 
+        </h3>
+        <a href="/dishes/new" class="title">Share a dish</a>
+    <div class="card-wrapper"> 
+        <% dishes.forEach(dish=> { %>
+            
+            <div class="ui-card">
+                <a href="/dishes/<%= dish.id %>" class="card-title">
+                    <%= dish.title %>
+                </a>
+                <img src="<%= dish.image_url %>" alt="">
+            </div>
+        <% }) %>
+    </div>
+<!-- 
+    <p> Logged as a < %= currentUser.email %></p> -->

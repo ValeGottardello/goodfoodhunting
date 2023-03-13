@@ -1,0 +1,15 @@
+
+    
+    <h2>Edit dish</h2>
+    <h3> <%= dish.id %> </h3>
+
+    <form action="/dishes/<%= dish.id %>" method="post"> 
+      <input type="hidden" name="_method" value="put" />
+      <label for="">title</label>
+      <input type="text" name="title" value="<%= dish.title %>" />
+      <label for="">image url</label>
+      <input type="text" name="image_url" value="<%= dish.image_url %>" />
+
+        <button>Edit</button>
+    </form>
+    <a href="/">Home</a>
