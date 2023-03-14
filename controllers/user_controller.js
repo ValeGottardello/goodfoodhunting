@@ -56,7 +56,7 @@ router.put('/users/:id', (req, res) => {// update single user
         bcrypt.hash(plainTextPassword, salt, (err, digestedPassword) => {
             //the digested password is what we want to save in db
             console.log(digestedPassword);
-
+``
             const sql = `UPDATE users SET email = $1, password_digest = $2 WHERE id = ${req.params.id};`
 
             // res.send(`${sql}`)
@@ -64,8 +64,9 @@ router.put('/users/:id', (req, res) => {// update single user
                 if (err) {
                     console.log(err);
                 } else {
-                    console.log(dbRes.rows);
-                    res.redirect('/')
+                    // let email = dbRes.rows[0].email;
+                    // console.log(email);
+                    res.redirect('/login')
                 }
             })
         })
@@ -87,6 +88,7 @@ router.delete('/users/:id', (req, res) => {// delete a user
         }
     })
 })
+
 
 
 module.exports = router

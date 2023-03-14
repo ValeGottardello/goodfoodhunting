@@ -1,0 +1,40 @@
+// router.post('/users', (req, res) => {//create a user
+
+//     const email = req.body.email
+//     const plainTextPassword = req.body.password
+
+//     //one way function password(pudding) + salt = digested password 
+//     bcrypt.genSalt(10, (err, salt) => {
+
+//         bcrypt.hash(plainTextPassword, salt, (err, digestedPassword) => {
+//             //the digested password is what we want to save in db
+//             console.log(digestedPassword);
+
+//             const sql = `INSERT INTO users (email, password_digest) VALUES ($1, $2) RETURNING email;`
+
+//             db.query(sql, [email, digestedPassword], (err, dbRes) => {
+//                 if (err) {
+//                     console.log(err);
+//                 } else {
+//                     let newemail = dbRes.rows[0].email;
+//                     res.render('myaccount', {newemail})
+//                 }
+//             })
+//         })
+//     })
+// })
+// router.delete('/users/:id', (req, res) => {// delete a user 
+//     const sql = `DELETE FROM users WHERE id = $1;`
+//     // res.send(`${sql}`)
+//     db.query(sql, [req.params.id], (err, dbRes) => {
+//         if (err) {
+//             console.log(err);
+
+//         } else {
+//             console.log(dbRes.rows);
+//             req.session.destroy(() => {
+//                 res.redirect("/")
+//             })
+//         }
+//     })
+// })
