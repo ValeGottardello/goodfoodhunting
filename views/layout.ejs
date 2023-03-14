@@ -16,9 +16,8 @@
     <div class="wrapper">
         <%- body %>
     </div>
-
-    <a href="/">Home</a>
-    <a href="">Login</a>
+    <nav>
+        <a href="/">Home</a>
 
     <% if (isLoggedIn()) { %>
         <p>Logged in as <%= currentUser.email %></p>
@@ -26,13 +25,14 @@
             <input type="hidden" name="_method" value="delete">
             <button>Logout</button>
         </form>
+        <!-- <a href="/users/< %= currentUser.email %>/edit">Setting account</a> -->
        
     <% } else { %>
-    
+        <a href="/users">Sign Up</a>
         <a href="/login">Login</a>
     
     <% } %>
-    
+    </nav>
 </body>
 
 </html>

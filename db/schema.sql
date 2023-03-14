@@ -4,7 +4,8 @@ CREATE TABLE dishes (
     id SERIAL PRIMARY KEY,
     title TEXT,
     image_url TEXT,  
-    details TEXT
+    details TEXT,
+    user_id INTEGER
 ); 
 
 CREATE TABLE users (

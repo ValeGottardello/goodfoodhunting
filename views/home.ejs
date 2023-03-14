@@ -4,6 +4,7 @@
             Hello <%= email %> ! 
         </h3>
         <a href="/dishes/new" class="title">Share a dish</a>
+        
     <div class="card-wrapper"> 
         <% dishes.forEach(dish=> { %>
             
@@ -15,5 +16,8 @@
             </div>
         <% }) %>
     </div>
-<!-- 
-    <p> Logged as a < %= currentUser.email %></p> -->
+
+    <nav>
+            <a href="/users/<%= email %>/edit">Setting account</a>
+            
+    </nav>

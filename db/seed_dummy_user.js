@@ -1,27 +1,29 @@
-const { Client } = require('pg') //need to save to db
 
-const bcrypt = require('bcrypt')
+//  const { Client } = require('pg') //need to save to db
 
-const email = 'dt@gmail.com'
-const plainTextPassword = 'pudding'
+// const bcrypt = require('bcrypt')
 
-const db = new Client ({
-    database: 'goodfoodhunting',
-})
+// ///
+// const email = 'dt@gmail.com'
+// const plainTextPassword = 'pudding'
 
-db.connect()
+// const db = new Client ({
+//     database: 'goodfoodhunting',
+// })
 
-//one way function password(pudding) + salt = digested password 
-bcrypt.genSalt(10, (err, salt) => {
+// db.connect()
 
-    bcrypt.hash(plainTextPassword, salt, (err, digestedPassword) => {
-        //the digested password is what we want to save in db
-        console.log(digestedPassword);
+// //one way function password(pudding) + salt = digested password 
+// bcrypt.genSalt(10, (err, salt) => {
 
-        const sql = `INSERT INTO users (email, password_digest) VALUES ('${email}', '${digestedPassword}');`
+//     bcrypt.hash(plainTextPassword, salt, (err, digestedPassword) => {
+//         //the digested password is what we want to save in db
+//         console.log(digestedPassword);
 
-        db.query(sql, (err, dbRes) =>{
-            db.end()
-        })
-    })
-})
+//         const sql = `INSERT INTO users (email, password_digest) VALUES ('${email}', '${digestedPassword}');`
+
+//         db.query(sql, (err, dbRes) =>{
+//             db.end()
+//         })
+//     })
+// })

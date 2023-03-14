@@ -6,11 +6,15 @@ const logger = require('./middlewares/logger')
 const expressLayouts = require('express-ejs-layouts')
 const dishController = require('./controllers/dish_controller')
 const sessionController = require('./controllers/session_controller')
+const userController = require('./controllers/user_controller')
 const setCurrentUser = require('./middlewares/setCurrentUser')
 // const ensureLoggedIn = require('./middlewares/ensure_loggedin')
 const session = require('express-session')
+const MemoryStore = require('memorystore')(session)
 const db = require('./db')
 const viewHelpers = require('./middlewares/view_helpers')
+
+
 //http methods -get opost put patch delete\
 //CRUD APP 
 /*              DATABASE     HTTP
@@ -31,7 +35,7 @@ resources your're wotrking with - dishes, users, comments
 
 //the server.js depends on dish controller and dishcontroller depends on database
 //------+//  
-//   |
+//     |
 //     |
 //     V
 app.set('view engine', 'ejs')
@@ -59,10 +63,18 @@ app.use(method_override)
 //     |
 //     V
 app.use(session({
-    secret: process.env.SESSION_SECRET || 'mistyrose',
+    cookie: { maxAge: 86400000 },
+    store: new MemoryStore({
+      checkPeriod: 86400000 // prune expired entries every 24h
+    }),
     resave: false,
-    saveUninitialized: true,
+    secret: 'keyboard cat'
 }))
+// app.use(session({
+//     secret: process.env.SESSION_SECRET || 'mistyrose',
+//     resave: false,
+//     saveUninitialized: true,
+// }))
 //to access in all views a object
 app.use(setCurrentUser)
 //     |
@@ -73,6 +85,10 @@ app.use(viewHelpers)
 //     |
 //     V
 app.use("/", sessionController)
+//     |
+//     |
+//     V
+app.use("/", userController)
 //     |
 //     |
 //     V

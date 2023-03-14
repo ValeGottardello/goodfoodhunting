@@ -1,0 +1,21 @@
+
+<h4>Setting your account</h4>
+<form action="/users/<%= user.id %>" method="post">
+    <input type="hidden" name="_method" value="put" />
+    <label for="">Current email</label>
+    <input type="text" name="email" id="" />
+    <label for="">New email</label>
+    <input type="text" name="newemail" id="" />
+    <label for="">Current Password</label>
+    <input type="password" name="password" id="" />
+    <label for="">New Password</label>
+    <input type="password" name="newpassword" id="" />
+
+    <button>Edit your account</button>
+</form>
+<h4>Delete your account</h4>
+    <form action="/users/<%= user.id %>" method="post">
+        <input type="hidden" name="_method" value="delete" />  
+        <button>Delete</button>
+    </form>
+
